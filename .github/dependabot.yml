@@ -40,7 +40,7 @@ updates:
     labels:
       - "dependencies"
 
-    versioning-strategy: "increase"
+    versioning-strategy: "widen"
 
     target-branch: "master"
 
