@@ -24,49 +24,88 @@ jobs:
       extensions: "ctype, curl, dom, iconv, intl, mbstring, simplexml, tokenizer, xml, xmlwriter"
       ini-values: "opcache.enable=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On, intl.default_locale=de, intl.use_exceptions=1, zend.exception_ignore_args=0"
       composer-options: "--optimize-autoloader --prefer-dist --prefer-stable -v"
-      skip-validate-composer: false
+      skip-validate-composer: true
       skip-phplint: true
       skip-check-composer: true
 
-  install:
-    name: "Install Project"
-
-    needs: "validate"
-
-    uses: "mimmi20/ci/.github/workflows/install.yml@master"
-    with:
-      extensions: "ctype, curl, dom, iconv, intl, mbstring, simplexml, tokenizer, xml, xmlwriter"
-      ini-values: "opcache.enable=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On, intl.default_locale=de, intl.use_exceptions=1, zend.exception_ignore_args=0"
-      composer-options: "--optimize-autoloader --prefer-dist --prefer-stable -v"
-
-#  analytics:
-#    name: "Project Analysis"
-#
-#    needs: "install"
-#
-#    uses: "mimmi20/ci/.github/workflows/analytics.yml@master"
-#    with:
-#      extensions: "ctype, curl, dom, iconv, intl, mbstring, simplexml, tokenizer, xml, xmlwriter"
-#      ini-values: "opcache.enable=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On, intl.default_locale=de, intl.use_exceptions=1, zend.exception_ignore_args=0"
-#      composer-options: "--optimize-autoloader --prefer-dist --prefer-stable -v"
-#      skip-phpstan: true
-#      skip-rector: true
-#      skip-phpmd: true
-#
 #  tests:
-#    name: "UnitTests & Code Coverage"
+#    name: "UnitTests with vitest"
 #
-#    needs: "analytics"
+#    needs:
+#      - "validate"
 #
-#    uses: "mimmi20/ci/.github/workflows/test.yml@master"
-#    with:
-#      extensions: "ctype, curl, dom, iconv, intl, mbstring, simplexml, tokenizer, xml, xmlwriter"
-#      ini-values: "opcache.enable=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On, intl.default_locale=de, intl.use_exceptions=1, zend.exception_ignore_args=0"
-#      composer-options: "--optimize-autoloader --prefer-dist --prefer-stable -v"
-#      skip-phpunit: false
-#      skip-vitest: true
-#      skip-stryker: true
-#      min-msi: 100
-#      min-covered-msi: 100
-#      upload-codecov: true
-#      upload-codeclimate: false
+#    runs-on: "${{ matrix.operating-system }}"
+#    timeout-minutes: 10
+#    continue-on-error: false
+#
+#    strategy:
+#      fail-fast: false
+#
+#      matrix:
+#        operating-system:
+#          - "ubuntu-20.04"
+#          - "ubuntu-22.04"
+#
+#        node-version:
+#          - "18"
+#          - "20"
+#          - "21"
+#
+#    steps:
+#      - name: "Checkout"
+#        uses: "actions/checkout@v4"
+#        with:
+#          # Disabling shallow clone is recommended for improving relevancy of reporting
+#          fetch-depth: 0
+#          lfs: false
+#          persist-credentials: false
+#
+#      - name: "Use Node.js ${{ matrix.node-version }}"
+#        uses: "actions/setup-node@v4"
+#        with:
+#          node-version: "${{ matrix.node-version }}"
+#
+#      - name: "install dependencies"
+#        run: "npm install --frozen-lockfile"
+#
+#      - name: "Run tests and generate coverage report"
+#        run: "npm run coverage"
+#
+#      - name: "Upload coverage report to Codecov"
+#        uses: "codecov/codecov-action@v4.0.1"
+#        with:
+#          fail_ci_if_error: true
+#          file: ".reports/clover.xml"
+#          flags: "vitest,nodejs-${{ matrix.node-version }},${{ matrix.operating-system }}"
+#          verbose: false
+#        env:
+#          CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
+#
+#      - name: "Upload coverage to Codeclimate"
+#        uses: "paambaati/codeclimate-action@v5.0.0"
+#        env:
+#          CC_TEST_REPORTER_ID: "${{ secrets.CODECLIMATE_API_KEY }}"
+#        with:
+#          coverageLocations: ".reports/clover.xml:clover"
+#          debug: false
+#
+#  # This is a meta job to avoid to have to constantly change the protection rules
+#  # whenever we touch the matrix.
+#  tests-status:
+#    name: "Unit & Integration Tests Status"
+#
+#    runs-on: "ubuntu-22.04"
+#
+#    if: always()
+#
+#    needs:
+#      - "tests"
+#
+#    steps:
+#      - name: Successful run
+#        if: ${{ !(contains(needs.*.result, 'failure')) }}
+#        run: exit 0
+#
+#      - name: Failing run
+#        if: ${{ contains(needs.*.result, 'failure') }}
+#        run: exit 1
