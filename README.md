@@ -6,7 +6,7 @@ Diese Library benötigt nodejs
 
 ## Einbindung per npm
 
-```
+```json lines
 {
 ...
     "devDependencies": {
