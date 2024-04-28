@@ -7,22 +7,21 @@
   "assignees": [
     "mimmi20"
   ],
-  "automerge": true,
+  "automerge": false,
   "commitBody": "Signed-off-by: {{{gitAuthor}}}",
   "commitBodyTable": true,
   "configMigration": true,
   "dependencyDashboard": true,
+  "dependencyDashboardApproval": true,
   "enabledManagers": ["composer", "github-actions", "npm"],
+  "ignoreTests": false,
   "ignoreUnstable": true,
   "internalChecksFilter": "strict",
   "labels": [
     "dependencies"
   ],
   "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": [
-      "at 4:00 am on Sunday"
-    ]
+    "enabled": false
   },
   "platformAutomerge": false,
   "prBodyColumns": [
