@@ -60,13 +60,8 @@
       "rangeStrategy": "widen"
     },
     {
-      "groupName": "peerDependencies",
-      "matchDepTypes": ["peerDependencies"],
-      "rangeStrategy": "widen"
-    },
-    {
       "groupName": "devDependencies",
-      "matchDepTypes": ["devDependencies"],
+      "matchDepTypes": ["devDependencies", "peerDependencies"],
       "rangeStrategy": "widen"
     },
     {
