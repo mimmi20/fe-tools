@@ -4,38 +4,52 @@
   "extends": ["mergeConfidence:all-badges"],
 
   "enabled": true,
+
   "assignees": [
     "mimmi20"
   ],
-  "automerge": false,
+  "branchConcurrentLimit": 0,
   "commitBody": "Signed-off-by: {{{gitAuthor}}}",
   "commitBodyTable": true,
   "configMigration": true,
+  "configWarningReuseIssue": false,
   "dependencyDashboard": true,
   "dependencyDashboardApproval": true,
-  "enabledManagers": ["composer", "github-actions", "npm"],
-  "ignoreTests": false,
-  "ignoreUnstable": true,
-  "internalChecksFilter": "strict",
+  "dependencyDashboardOSVVulnerabilitySummary": "all",
   "labels": [
     "dependencies"
   ],
-  "lockFileMaintenance": {
-    "enabled": false
-  },
+  "osvVulnerabilityAlerts": true,
   "platformAutomerge": false,
   "prBodyColumns": [
     "Package",
-    "Change",
     "Type",
-    "Update"
+    "Update",
+    "Change",
+    "Pending",
+    "New value",
+    "Package file",
+    "References",
+    "Age",
+    "Adoption",
+    "Passing",
+    "Confidence"
   ],
   "prBodyDefinitions": {
     "Package": "`{{{depName}}}`",
     "Type": "{{{depType}}}",
     "Update": "{{{updateType}}}",
-    "Change": "[{{#if displayFrom}}`{{{displayFrom}}}` -> {{else}}{{#if currentValue}}`{{{currentValue}}}` -> {{/if}}{{/if}}{{#if displayTo}}`{{{displayTo}}}`{{else}}`{{{newValue}}}`{{/if}}]({{#if depName}}https://renovatebot.com/diffs/npm/{{replace '/' '%2f' depName}}/{{{currentVersion}}}/{{{newVersion}}}{{/if}})"
+    "Change": "[{{#if displayFrom}}`{{{displayFrom}}}` -> {{else}}{{#if currentValue}}`{{{currentValue}}}` -> {{/if}}{{/if}}{{#if displayTo}}`{{{displayTo}}}`{{else}}`{{{newValue}}}`{{/if}}]({{#if depName}}https://renovatebot.com/diffs/npm/{{replace '/' '%2f' depName}}/{{{currentVersion}}}/{{{newVersion}}}{{/if}})",
+    "Pending": "{{{displayPending}}}",
+    "New value": "{{{newValue}}}",
+    "Package file": "{{{packageFile}}}",
+    "References": "{{{references}}}",
+    "Age": "{{#if newVersion}}[![age](https://developer.mend.io/api/mc/badges/age/{{datasource}}/{{replace '/' '%2f' depName}}/{{{newVersion}}}?slim=true)](https://docs.renovatebot.com/merge-confidence/){{/if}}",
+    "Adoption": "{{#if newVersion}}[![adoption](https://developer.mend.io/api/mc/badges/adoption/{{datasource}}/{{replace '/' '%2f' depName}}/{{{newVersion}}}?slim=true)](https://docs.renovatebot.com/merge-confidence/){{/if}}",
+    "Passing": "{{#if newVersion}}[![passing](https://developer.mend.io/api/mc/badges/compatibility/{{datasource}}/{{replace '/' '%2f' depName}}/{{{currentVersion}}}/{{{newVersion}}}?slim=true)](https://docs.renovatebot.com/merge-confidence/){{/if}}",
+    "Confidence": "{{#if newVersion}}[![confidence](https://developer.mend.io/api/mc/badges/confidence/{{datasource}}/{{replace '/' '%2f' depName}}/{{{currentVersion}}}/{{{newVersion}}}?slim=true)](https://docs.renovatebot.com/merge-confidence/){{/if}}"
   },
+  "prConcurrentLimit": 0,
   "prCreation": "immediate",
   "prHourlyLimit": 0,
   "rangeStrategy": "bump",
@@ -43,15 +57,38 @@
   "reviewers": [
     "mimmi20"
   ],
-  "rollbackPrs": true,
   "schedule": ["at 4:00 am on Sunday"],
   "semanticCommits": "disabled",
-  "separateMajorMinor": true,
-  "separateMinorPatch": false,
   "timezone": "Europe/Berlin",
-  "updateLockFiles": false,
-  "updateNotScheduled": false,
   "packageRules": [
+    {
+      "groupName": "PHP",
+      "matchDepNames": ["php"],
+      "allowedVersions": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+      "ignoreUnstable": false,
+      "rangeStrategy": "widen"
+    },
+    {
+      "groupName": "Node",
+      "matchDepNames": ["node"],
+      "allowedVersions": "~19.5.0 || ~20.0.0 || ~21.0.0 || ~22.0.0",
+      "ignoreUnstable": false,
+      "rangeStrategy": "widen"
+    },
+    {
+      "groupName": "peerDependencies",
+      "matchDepTypes": ["peerDependencies"],
+      "rangeStrategy": "widen"
+    },
+    {
+      "groupName": "devDependencies",
+      "matchDepTypes": ["devDependencies"],
+      "rangeStrategy": "widen"
+    },
+    {
+      "matchPackageNames": ["nikic/php-parser"],
+      "rangeStrategy": "widen"
+    },
     {
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch-dependencies",
@@ -62,16 +99,10 @@
         "minor",
         "patch"
       ]
-    },
-    {
-      "groupName": "PHP",
-      "matchPackageNames": ["php"],
-      "allowedVersions": "^8.1",
-      "ignoreUnstable": false,
-      "rangeStrategy": "widen"
     }
   ],
   "vulnerabilityAlerts": {
-    "enabled": true
+    "enabled": true,
+    "labels": ["security"]
   }
 }
