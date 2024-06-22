@@ -199,7 +199,7 @@
     "yargs": "^17.7.2"
   },
   "engines": {
-    "node": ">=19.5.0"
+    "node": ">=19.9.0"
   },
   "packageManager": "^npm@9.6.6"
 }
