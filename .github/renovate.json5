@@ -18,7 +18,6 @@
     ":prImmediately",
     ":rebaseStalePrs",
     ":semanticCommitsDisabled",
-    ":separateMajorReleases",
     ":timezone(Europe/Berlin)",
     ":updateNotScheduled",
     "group:allDigest",
@@ -47,10 +46,18 @@
   "rangeStrategy": "bump",
   "recreateWhen": "never",
   "rollbackPrs": true,
+  "separateMajorMinor": true,
+  "separateMultipleMajor": true,
   "packageRules": [
     {
       "matchDepTypes": ["devDependencies", "peerDependencies"],
       "rangeStrategy": "widen"
+    },
+    {
+      "matchPackageNames": [
+        "@typescript-eslint/*"
+      ],
+      "separateMultipleMajor": false
     },
     {
       "matchPackageNames": [
