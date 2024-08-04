@@ -3,7 +3,9 @@
 
   "extends": [
     ":assignAndReview(mimmi20)",
-    ":automergeDisabled",
+    ":automergeMajor",
+    ":automergePr",
+    ":automergeRequireAllStatusChecks",
     ":combinePatchMinorReleases",
     ":disableDependencyDashboard",
     ":disableRateLimiting",
