@@ -54,6 +54,8 @@
       "rangeStrategy": "widen"
     },
     {
+      "groupName": "all @typescript-eslint dependencies",
+      "groupSlug": "all-typescript-eslint-dependencies",
       "matchPackageNames": [
         "@typescript-eslint/*"
       ],
