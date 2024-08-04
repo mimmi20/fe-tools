@@ -132,7 +132,7 @@
     "@types/node": "^20.14.14 || ^21.0.0 || ^22.0.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0 || ^7.13.0",
     "@typescript-eslint/parser": "^6.21.0 || ^7.13.0",
-    "@typescript-eslint/typescript-estree": "^6.21.0 || ^7.13.0",
+    "@typescript-eslint/typescript-estree": "^6.21.0 || ^7.13.0 || ^8.0.0",
     "@vheemstra/imagemin-avifenc": "^2.1.0",
     "@vheemstra/vite-plugin-imagemin": "^1.2.0 || ^2.0.0",
     "@vitest/coverage-istanbul": "^0.34.1 || ^1.0.0",
