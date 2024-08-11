@@ -167,6 +167,7 @@ updates:
       - dependency-name: "postcss-pseudo-class-any-link"
       - dependency-name: "postcss-selector-not"
       - dependency-name: "supports-color"
+      - dependency-name: "vite-plugin-dts"
       - dependency-name: "vitest"
 
     # Disable rebasing for all pull requests
