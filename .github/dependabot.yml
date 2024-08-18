@@ -128,7 +128,9 @@ updates:
     ignore:
       - dependency-name: "@csstools/postcss-cascade-layers"
       - dependency-name: "@csstools/postcss-color-function"
+      - dependency-name: "@csstools/postcss-color-mix-function"
       - dependency-name: "@csstools/postcss-font-format-keywords"
+      - dependency-name: "@csstools/postcss-gradients-interpolation-method"
       - dependency-name: "@csstools/postcss-is-pseudo-class"
       - dependency-name: "@csstools/postcss-nested-calc"
       - dependency-name: "@csstools/postcss-normalize-display-values"
