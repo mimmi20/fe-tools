@@ -47,7 +47,8 @@
     "css-declaration-sorter": "^7.2.0",
     "cssnano": "^6.0.3 || ^7.0.2",
     "cssnano-preset-default": "^6.0.3 || ^7.0.2",
-    "esbuild": "^0.23.1 || ^0.24.0",
+    "esbuild": "~0.23.1",
+    "esbuild-plugin-browserslist": "^0.14.0",
     "eslint": "^8.57.1 || ^9.11.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.30.0",
@@ -148,7 +149,8 @@
     "css-declaration-sorter": "^7.2.0",
     "cssnano": "^6.0.3 || ^7.0.2",
     "cssnano-preset-default": "^6.0.3 || ^7.0.2",
-    "esbuild": "^0.23.1 || ^0.24.0",
+    "esbuild": "~0.23.1",
+    "esbuild-plugin-browserslist": "^0.14.0",
     "eslint": "^8.57.1 || ^9.11.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.30.0",
@@ -205,7 +207,6 @@
     "yargs": "^17.7.2"
   },
   "engines": {
-    "node": ">=19.9.0"
-  },
-  "packageManager": "^npm@9.6.6"
+    "node": "^20.9.0 || >= 22.0.0"
+  }
 }
