@@ -155,6 +155,7 @@ updates:
       - dependency-name: "cssnano"
       - dependency-name: "cssnano-preset-default"
       - dependency-name: "esbuild"
+      - dependency-name: "esbuild-plugin-browserslist"
       - dependency-name: "eslint"
       - dependency-name: "imagemin"
       - dependency-name: "postcss-color-hex-alpha"
