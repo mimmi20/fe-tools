@@ -65,7 +65,6 @@
       "matchPackageNames": [
         "@vitest/coverage-istanbul",
         "@vitest/ui",
-        "esbuild",
         "vitest"
       ],
       "enabled": false
