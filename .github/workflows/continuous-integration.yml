@@ -45,24 +45,6 @@ jobs:
       skip-php-install: true
       skip-npm-install: false
 
-  analytics:
-    name: "Project Analysis"
-
-    needs: "install"
-
-    uses: "mimmi20/ci/.github/workflows/analytics.yml@8.1"
-    with:
-      extensions: "ctype, curl, dom, fileinfo, iconv, intl, mbstring, simplexml, tokenizer, xml, xmlwriter"
-      ini-values: "opcache.enable=1, opcache.fast_shutdown=0, zend.assertions=1, assert.exception=On, intl.default_locale=de, intl.use_exceptions=1, zend.exception_ignore_args=0"
-      composer-options: "--optimize-autoloader --prefer-dist --prefer-stable -v"
-      skip-phpstan: true
-      skip-rector: true
-      skip-phpmd: true
-      skip-eslint: true
-      skip-stylelint: true
-      skip-prettier: true
-      phpcs-options: ""
-
 #  tests:
 #    name: "UnitTests with vitest"
 #
