@@ -48,6 +48,7 @@
   "rollbackPrs": true,
   "separateMajorMinor": true,
   "separateMultipleMajor": true,
+  "schedule": ["before 4am on Thursday"],
   "packageRules": [
     {
       "matchDepTypes": ["devDependencies", "peerDependencies"],
