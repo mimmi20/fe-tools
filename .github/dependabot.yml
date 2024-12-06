@@ -5,87 +5,6 @@
 version: 2
 
 updates:
-  - package-ecosystem: "composer"
-
-    directory: "/"
-
-    schedule:
-      interval: "weekly"
-      day: "thursday"
-      time: "04:00"
-      timezone: "Europe/Berlin"
-
-    groups:
-      security-updates:
-        applies-to: "security-updates"
-        patterns:
-          - "*"
-        exclude-patterns:
-          - "friendsofphp/php-cs-fixer"
-          - "sirbrillig/phpcs-variable-analysis"
-          - "slevomat/coding-standard"
-          - "squizlabs/php_codesniffer"
-      version-updates:
-        applies-to: "version-updates"
-        patterns:
-          - "*"
-        exclude-patterns:
-          - "friendsofphp/php-cs-fixer"
-          - "sirbrillig/phpcs-variable-analysis"
-          - "slevomat/coding-standard"
-          - "squizlabs/php_codesniffer"
-
-    open-pull-requests-limit: 10
-
-    reviewers:
-      - "mimmi20"
-
-    assignees:
-      - "mimmi20"
-
-    labels:
-      - "dependencies"
-
-    versioning-strategy: "increase"
-
-    target-branch: "master"
-
-    commit-message:
-      include: "scope"
-      prefix: "composer"
-
-    #allow:
-    #  - '*'
-
-    ignore:
-      - dependency-name: "browscap/browscap"
-      - dependency-name: "elasticsearch/elasticsearch"
-      - dependency-name: "endorphin-studio/browser-detector-tests"
-      - dependency-name: "illuminate/config"
-      - dependency-name: "illuminate/container"
-      - dependency-name: "illuminate/contracts"
-      - dependency-name: "illuminate/events"
-      - dependency-name: "illuminate/filesystem"
-      - dependency-name: "illuminate/view"
-      - dependency-name: "infection/infection"
-      - dependency-name: "laminas/laminas-diactoros"
-      - dependency-name: "laminas/laminas-servicemanager"
-      - dependency-name: "nikic/php-parser"
-      - dependency-name: "phpunit/phpunit"
-      - dependency-name: "predis/predis"
-      - dependency-name: "psr/container"
-      - dependency-name: "psr/http-message"
-      - dependency-name: "psr/log"
-      - dependency-name: "psr/simple-cache"
-      - dependency-name: "symfony/console"
-      - dependency-name: "symfony/filesystem"
-      - dependency-name: "symfony/finder"
-      - dependency-name: "symfony/http-foundation"
-      - dependency-name: "symfony/yaml"
-
-    # Disable rebasing for all pull requests
-    rebase-strategy: "disabled"
-
   - package-ecosystem: "npm"
 
     directory: "/"
@@ -95,16 +14,6 @@ updates:
       day: "thursday"
       time: "04:00"
       timezone: "Europe/Berlin"
-
-    groups:
-      security-updates:
-        applies-to: "security-updates"
-        patterns:
-          - "*"
-      version-updates:
-        applies-to: "version-updates"
-        patterns:
-          - "*"
 
     open-pull-requests-limit: 10
 
@@ -125,60 +34,6 @@ updates:
       include: "scope"
       prefix: "npm"
 
-    ignore:
-      - dependency-name: "@csstools/postcss-cascade-layers"
-      - dependency-name: "@csstools/postcss-color-function"
-      - dependency-name: "@csstools/postcss-color-mix-function"
-      - dependency-name: "@csstools/postcss-exponential-functions"
-      - dependency-name: "@csstools/postcss-font-format-keywords"
-      - dependency-name: "@csstools/postcss-gradients-interpolation-method"
-      - dependency-name: "@csstools/postcss-is-pseudo-class"
-      - dependency-name: "@csstools/postcss-media-minmax"
-      - dependency-name: "@csstools/postcss-media-queries-aspect-ratio-number-values"
-      - dependency-name: "@csstools/postcss-nested-calc"
-      - dependency-name: "@csstools/postcss-normalize-display-values"
-      - dependency-name: "@csstools/postcss-text-decoration-shorthand"
-      - dependency-name: "@csstools/postcss-trigonometric-functions"
-      - dependency-name: "@csstools/postcss-unset-value"
-      - dependency-name: "@localnerve/imagemin-gifsicle"
-      - dependency-name: "@localnerve/imagemin-pngquant"
-      - dependency-name: "@node-minify/core"
-      - dependency-name: "@node-minify/no-compress"
-      - dependency-name: "@node-minify/terser"
-      - dependency-name: "@types/node"
-      - dependency-name: "@typescript-eslint/eslint-plugin"
-      - dependency-name: "@typescript-eslint/parser"
-      - dependency-name: "@typescript-eslint/typescript-estree"
-      - dependency-name: "@vheemstra/vite-plugin-imagemin"
-      - dependency-name: "@vitest/coverage-istanbul"
-      - dependency-name: "@vitest/ui"
-      - dependency-name: "cssnano"
-      - dependency-name: "cssnano-preset-default"
-      - dependency-name: "esbuild"
-      - dependency-name: "esbuild-plugin-browserslist"
-      - dependency-name: "eslint"
-      - dependency-name: "imagemin"
-      - dependency-name: "postcss-color-hex-alpha"
-      - dependency-name: "postcss-color-rebeccapurple"
-      - dependency-name: "postcss-custom-media"
-      - dependency-name: "postcss-custom-properties"
-      - dependency-name: "postcss-custom-selectors"
-      - dependency-name: "postcss-dir-pseudo-class"
-      - dependency-name: "postcss-focus-visible"
-      - dependency-name: "postcss-focus-within"
-      - dependency-name: "postcss-gap-properties"
-      - dependency-name: "postcss-image-set-function"
-      - dependency-name: "postcss-load-config"
-      - dependency-name: "postcss-nesting"
-      - dependency-name: "postcss-opacity-percentage"
-      - dependency-name: "postcss-overflow-shorthand"
-      - dependency-name: "postcss-preset-env"
-      - dependency-name: "postcss-pseudo-class-any-link"
-      - dependency-name: "postcss-selector-not"
-      - dependency-name: "supports-color"
-      - dependency-name: "vite-plugin-dts"
-      - dependency-name: "vitest"
-
     # Disable rebasing for all pull requests
     rebase-strategy: "disabled"
 
@@ -191,18 +46,6 @@ updates:
       day: "thursday"
       time: "04:00"
       timezone: "Europe/Berlin"
-
-    groups:
-      # Specify a name for the group, which will be used in pull request titles
-      # and branch names
-      security-updates:
-        applies-to: "security-updates"
-        patterns:
-          - "*"
-      version-updates:
-        applies-to: "version-updates"
-        patterns:
-          - "*"
 
     open-pull-requests-limit: 10
 
